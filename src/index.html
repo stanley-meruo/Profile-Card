@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Profile Card</title>
+</head>
+<body class="bg-gradient-to-br from-slate-500 via-blue-200 to-slate-600 lg:h-screen p-6 sm:p-10 md:p-16 lg:p-20 xl:p-28 font-bona">
+    
+    <section class="bg-white rounded-xl shadow-lg px-4 py-8 mx-auto my-auto lg:flex lg:items-center lg:justify-center lg:gap-8 lg:p-12">
+        
+        <section class="lg:w-1/2">
+            <img src="/images/stan.jpg" class="w-48 mx-auto p-1 rounded-full border-4 border-gray-200 -mb-16 lg:w-52">
+            
+            <div class="text-center mb-6 bg-gray-200 rounded-xl shadow-xl py-12 lg:py-20">
+                <h1 class="text-3xl font-bold drop-shadow-md shadow-black mt-6">STANLEY MERUO</h1>
+                <p class="text-lg font-semibold text-gray-600">Web and Front-End Developer</p>
+            </div>
+        </section>
+
+        <section class="text-lg font-semibold text-gray-600 lg:w-1/2">
+            <a href="mailto:meruostanleovic86@gmail.com?subject=JOB%20HIRE%20&body=Hello%20Stanley,%0D%0A%0D%0A" class="flex justify-between bg-gray-100 rounded-full shadow-xl px-4 py-4 mb-4 hover:bg-gray-200">Email
+                <img src="/images/envelope.svg" alt="">
+            </a>
+            <a href="https://github.com/stanley-meruo" class="flex justify-between bg-gray-100 rounded-full shadow-xl px-4 py-4 mb-4 hover:bg-gray-200">Github
+                <img src="/images/github.svg" alt="">
+            </a>
+            <a href="https://www.behance.net/stanleymeruo" class="flex justify-between bg-gray-100 rounded-full shadow-xl px-4 py-4 mb-4 hover:bg-gray-200">Behance
+                <img src="/images/behance.svg" alt="">
+            </a>
+            <a href="https://www.linkedin.com/in/stanley-meruo-062122146" class="flex justify-between bg-gray-100 rounded-full shadow-xl px-4 py-4 mb-4 hover:bg-gray-200">LinkedIn
+                <img src="/images/linkedin.svg" alt=""> 
+            </a>
+            <div class="flex items-center justify-between bg-gray-100 rounded-full shadow-xl px-4 py-3 mb-4 hover:bg-gray-200">Projects:
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="28" height="32" class="-mb-1"><path d="M17,11H13V7a1,1,0,0,0-1-1h0a1,1,0,0,0-1,1v4H7a1,1,0,0,0-1,1H6a1,1,0,0,0,1,1h4v4a1,1,0,0,0,1,1h0a1,1,0,0,0,1-1V13h4a1,1,0,0,0,1-1h0A1,1,0,0,0,17,11Z"/></svg>
+                    <p id="count" class="text-3xl text-black"></p>  
+                </div>
+            </div>
+        </section>
+
+    </section>
+    
+    
+
+    <script>
+        const getData = async () => {
+            const span = document.querySelector("#count")
+            let result =[];
+            try{
+                const response = await fetch('https://api.github.com/users/stanley-meruo');
+
+                const result = await response.json();
+                console.log(result);
+                span.innerHTML = result.public_repos
+            } catch (e) {
+                console.log('error fetching')
+            }
+        }
+        getData()
+    </script>
+</body>
+</html>
